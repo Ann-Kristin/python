@@ -19,17 +19,18 @@ def readCsvFile(filename):
 def filterData(data, upperMatch, lowerMatch, minLength):
    filtered = []
    for row in data:
-      if float(row[2]) > lowerMatch and float(row[2]) < upperMatch and float(row[7]) > minLength:
+      if float(row[2]) > lowerMatch and float(row[2]) < upperMatch and float(row[3]) > minLength:
          filtered.append(row)
 
    return filtered
 
 def matchData(data1, data2):
    matched = []
-   for row1, row2 in zip(data1, data2):
-      if row1[0] in row2[0]:
-         matched.append(row1)
-         matched.append(row2)
+   for row1 in data1:
+      for row2 in data2:
+         if row1[0] == row2[0]:
+            matched.append(row1)
+#            matched.append(row2)
 
    return matched
 
